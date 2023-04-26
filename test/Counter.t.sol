@@ -16,10 +16,15 @@ contract CounterTest is Test {
         assertEq(counter.get(), 1);
     }
 
+    // If we know that test is going to fail.
+    // We have to add Fail in function name so that foundry knows that this test is going to fail
     function testFailDec() public {
         counter.dec();
     }
 
+    // Same as testFailDec
+    // We can simulate the above case explicitilly with
+    // more specific error
     function testDecUnderFlow() public {
         vm.expectRevert(stdError.arithmeticError);
         counter.dec();
